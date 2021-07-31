@@ -10,8 +10,8 @@ import (
 )
 
 func TestCheckAgeGroup(t *testing.T) {
-	t.Run("it should return 60+", func(t *testing.T) {
-		expectedResponse := "60+"
+	t.Run("it should return 61+", func(t *testing.T) {
+		expectedResponse := "61+"
 		actualResponse := service.CheckAgeGroup(90)
 		if expectedResponse != actualResponse {
 			t.Error(fmt.Sprintf("expected %v but got %v", expectedResponse, actualResponse))
@@ -127,7 +127,7 @@ func TestFindCountProvinceAndAgeGroup(t *testing.T) {
 			AgeGroup: map[string]int{
 				"0-30":  1,
 				"31-60": 2,
-				"60+":   1,
+				"61+":   1,
 				"N/A":   1,
 			},
 		}

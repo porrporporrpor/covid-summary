@@ -19,7 +19,7 @@ import (
 func TestSummaryAPI_SummaryAPI(t *testing.T) {
 	t.Run("it should return stat data with status OK", func(t *testing.T) {
 		expectedStatusCode := http.StatusOK
-		expectedResponse := `{"status":"success","data":{"Province":{"Chonburi":1,"Phrae":2,"Samut Songkhram":1},"AgeGroup":{"0-30":1,"31-60":2,"60+":1,"N/A":1}}}`
+		expectedResponse := `{"status":"success","data":{"Province":{"Chonburi":1,"Phrae":2,"Samut Songkhram":1},"AgeGroup":{"0-30":1,"31-60":2,"61+":1,"N/A":1}}}`
 
 		covidCaseService := mockdata.MockCovidCaseService{}
 		covidCase := []model.CovidData{
@@ -106,7 +106,7 @@ func TestSummaryAPI_SummaryAPI(t *testing.T) {
 			AgeGroup: map[string]int{
 				"0-30":  1,
 				"31-60": 2,
-				"60+":   1,
+				"61+":   1,
 				"N/A":   1,
 			},
 		}
@@ -225,7 +225,7 @@ func TestSummaryAPI_SummaryAPI(t *testing.T) {
 			AgeGroup: map[string]int{
 				"0-30":  1,
 				"31-60": 2,
-				"60+":   1,
+				"61+":   1,
 				"N/A":   1,
 			},
 		}

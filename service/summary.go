@@ -34,7 +34,7 @@ func (s SummaryService) FindCountProvinceAndAgeGroup(data []model.CovidData) mod
 
 func CheckAgeGroup(age int) string {
 	if age > 60 {
-		return "60+"
+		return "61+"
 	}
 	if age >= 31 && age <= 60 {
 		return "31-60"
