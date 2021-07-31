@@ -1,6 +1,7 @@
 package service_test
 
 import (
+	"errors"
 	"fmt"
 	"github.com/porrporporrpor/covid-summary/mockdata"
 	"net/http"
@@ -169,6 +170,24 @@ func TestGetCovidCase(t *testing.T) {
 		actualResponse, actualError := service.CovidCaseService{}.GetCovidCase(client)
 
 		if expectedError != actualError {
+			t.Error(fmt.Sprintf("expected error %v but got %v", expectedError, actualError))
+		}
+		if len(expectedResponse) != len(actualResponse) {
+			t.Error(fmt.Sprintf("expected length %v but got %v", len(expectedResponse), len(actualResponse)))
+		}
+	})
+	t.Run("it should return error cannot unmarshal request", func(t *testing.T) {
+		var expectedResponse []model.CovidData
+		expectedError := errors.New("invalid character 'i' looking for beginning of value")
+
+		mockResponse := `invalid response`
+		client := mockdata.MockHttpClient{
+			StatusCode: http.StatusOK,
+			Response:   mockResponse,
+		}
+		actualResponse, actualError := service.CovidCaseService{}.GetCovidCase(client)
+
+		if expectedError.Error() != actualError.Error() {
 			t.Error(fmt.Sprintf("expected error %v but got %v", expectedError, actualError))
 		}
 		if len(expectedResponse) != len(actualResponse) {
