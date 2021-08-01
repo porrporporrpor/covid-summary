@@ -24,7 +24,7 @@ func Boot(r *gin.Engine) error {
 
 func covidGroupRoute(r *gin.RouterGroup) {
 	summaryAPI := api.SummaryAPI{
-		SummaryService: service.SummaryService{},
+		SummaryService:   service.SummaryService{},
 		CovidCaseService: service.CovidCaseService{},
 	}
 
