@@ -15,10 +15,13 @@ type SummaryAPI struct {
 }
 
 func (s *SummaryAPI) SummaryAPI(ctx *gin.Context) {
+	x := "ehll"
+	ctx.JSON(http.StatusOK, x)
+	return
 	client := http.Client{}
 	covidCase, err := s.CovidCaseService.GetCovidCase(&client)
 	if err != nil {
-		ctx.AbortWithStatusJSON(http.StatusInternalServerError, model.HttpResponse{Status: model.FailStatus, Data: err.Error()})
+		ctx.JSON(http.StatusInternalServerError, model.HttpResponse{Status: model.FailStatus, Data: err.Error()})
 		return
 	}
 
